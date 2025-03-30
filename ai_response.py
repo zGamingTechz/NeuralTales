@@ -1,5 +1,4 @@
 from openai import OpenAI
-from keys import ai_key
 
 try:
     from keys import ai_key
