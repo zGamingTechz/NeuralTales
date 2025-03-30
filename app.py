@@ -77,10 +77,5 @@ def choice_two():
     return redirect("/response")
 
 
-def handler(request, *args, **kwargs):
-    return app(request.environ, *args, **kwargs)
-
-
-if __name__ == "__main__":
-    from gunicorn.app.wsgiapp import run
-    run()
+def handler(event, context):
+    return Response(app(event["body"]), status=200)
