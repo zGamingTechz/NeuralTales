@@ -52,7 +52,8 @@ def response():
     prev_story = session.get("prev_story", [])
 
     image_url = generate_image(session.get("title"))
-    response.appead(image_url)
+    response = list(response)
+    response.append(image_url)
 
     story.append(response)
     prev_story.append(paragraph)
