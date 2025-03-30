@@ -1,10 +1,14 @@
 from flask import Flask, redirect, render_template, request, session
-from keys import secret_key
 from ai_response import ai_response
 
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secret_key
+
+try:
+    from keys import secret_key
+    app.config['SECRET_KEY'] = secret_key
+except:
+    import os
+    app.config["SECRET_KEY"] = os.environ.get("secret_key", "fallback_secret")
 
 
 @app.route("/", methods=["GET", "POST"])

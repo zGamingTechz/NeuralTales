@@ -1,6 +1,13 @@
 from openai import OpenAI
 from keys import ai_key
 
+try:
+    from keys import ai_key
+    ai_key_final = ai_key
+except:
+    import os
+    ai_key_final = os.environ.get("ai_key", "fallback_secret")
+
 
 def ai_response(name, genre, plot, target_audience, writing_style, prev_story, choice):
     if prev_story == None:
@@ -10,7 +17,7 @@ def ai_response(name, genre, plot, target_audience, writing_style, prev_story, c
 
     client = OpenAI(
         base_url="https://api.studio.nebius.ai/v1/",
-        api_key=ai_key
+        api_key=ai_key_final
     )
 
     completion = client.chat.completions.create(
