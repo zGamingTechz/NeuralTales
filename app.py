@@ -80,5 +80,7 @@ def choice_two():
 def handler(request, *args, **kwargs):
     return app(request.environ, *args, **kwargs)
 
+
 if __name__ == "__main__":
-    app.run()
+    from gunicorn.app.wsgiapp import run
+    run()
