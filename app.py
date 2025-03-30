@@ -75,7 +75,3 @@ def choice_one():
 def choice_two():
     session["choice"] = session.get("choice2")
     return redirect("/response")
-
-
-def handler(request):
-    return app(request.environ, start_response)
