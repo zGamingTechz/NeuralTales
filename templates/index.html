@@ -235,6 +235,43 @@
         .return-link:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+        
+        .undo-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .undo-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .undo-button:active {
+            transform: translateY(-2px);
+        }
+        
+        .undo-button::before {
+            content: "↩";
+            font-size: 1.8rem;
+            margin-right: 2px;
+        }
     </style>
 </head>
 <body>
@@ -266,6 +303,8 @@
             </div>
         {% endfor %}
     </div>
+
+    <a href="/undo" class="undo-button">Undo</a>
 
     <footer>
         <div class="footer-content">

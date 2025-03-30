@@ -79,3 +79,12 @@ def choice_one():
 def choice_two():
     session["choice"] = session.get("choice2")
     return redirect("/response")
+
+
+@app.route("/undo", methods=["GET", "POST"])
+def undo():
+    story = session.get("story", [])
+    story.pop()
+    session["story"] = story
+
+    return redirect("/index")
