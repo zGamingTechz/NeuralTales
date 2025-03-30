@@ -127,6 +127,13 @@
             font-size: 1.05rem;
         }
         
+        .paragraph-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
         .choice-buttons {
             display: flex;
             gap: 1rem;
@@ -248,6 +255,7 @@
                 <div class="paragraph-header">
                     <h2>{{ i[0] }}</h2>
                 </div>
+                <img src="{{ i[4] }}" alt="Story illustration for {{ i[0] }}" class="paragraph-image">
                 <div class="paragraph-content">
                     <p>{{ i[1] }}</p>
                 </div>

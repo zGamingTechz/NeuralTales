@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, session
-from ai_response import ai_response
+from ai_response import ai_response, generate_image
 
 app = Flask(__name__)
 
@@ -50,6 +50,9 @@ def response():
 
     story = session.get("story", [])
     prev_story = session.get("prev_story", [])
+
+    image_url = generate_image(session.get("title"))
+    response.appead(image_url)
 
     story.append(response)
     prev_story.append(paragraph)
