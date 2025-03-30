@@ -77,5 +77,5 @@ def choice_two():
     return redirect("/response")
 
 
-def handler(event, context):
-    return Response(app(event["body"]), status=200)
+def handler(request):
+    return app(request.environ, start_response)
