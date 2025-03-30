@@ -35,3 +35,28 @@ def ai_response(name, genre, plot, target_audience, writing_style, prev_story, c
     choice2 = result.split('&')[3]
 
     return title, paragraph, choice1, choice2
+
+
+def generate_image(prompt):
+    client = OpenAI(
+        base_url="https://api.studio.nebius.ai/v1/",
+        api_key=ai_key_final
+    )
+
+    response = client.images.generate(
+        model="black-forest-labs/flux-schnell",
+        prompt=prompt,
+        response_format="url",
+        extra_body={
+            "response_extension": "webp",
+            "width": 512,
+            "height": 512,
+            "num_inference_steps": 16,
+            "seed": -1,
+            "negative_prompt": "Giraffes, night sky"
+        }
+    )
+    
+    url = response.data[0].url
+
+    return url
